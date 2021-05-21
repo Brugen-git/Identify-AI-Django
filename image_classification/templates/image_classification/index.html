@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Image Identification</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+{#    Bootstrap 5 #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<h1 align=center><u>Image Identification Application</u></h1>
+<p2>A simple Python/Django web based application with a pretrained model which will try to identify the uploaded. 
+The uploaded images are not saved :)</p2>
+
+
+<form method="post" enctype="multipart/form-data" style="margin-top: 50px; margin-bottom: 30px; color:green;" align="middle">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" id="btnUpload" class="btn btn-primary" style="background-color:green;" align="middle">Upload your image</button>
+</form>
+
+{% if image_uri is not None %}
+    {% if predicted_label is not None %}
+        <div class="alert alert-primary" role="alert"  style="color:red">
+            Prediction for the image: <b>{{ predicted_label }}</b>
+        </div> 
+    {% else %}
+        <div class="alert alert-danger" role="alert" align="center">
+            Prediction error. Could not predict.
+        </div>
+    {% endif %}
+<center>
+    <img src="{{ image_uri }}" class="img-fluid" alt="Uploaded image"
+         style="max-width: min(500px, 100%); height: auto; margin-top: 30px;">
+</center>
+{% endif %}
+
+
+
+
+</body>
+</html>
