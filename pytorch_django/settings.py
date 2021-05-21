@@ -25,7 +25,7 @@ SECRET_KEY = 'om+mod^k%vsvrw(^s%7g(0#utf#7m0^qcro211m&0l!im*j@3z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1:8000']
+ALLOWED_HOSTS = ['127.0.0.1:8000','https://image-identify.herokuapp.com/']
 
 
 # Application definition
